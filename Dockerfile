@@ -1,5 +1,9 @@
-FROM alpine
+FROM python:3.11-slim
 
-RUN apk add gcc make git linux-headers musl-dev python3
+WORKDIR /app
 
-RUN git clone https://github.com/EvdokiaFrd/parallel_systems_project_1 && cd parallel_systems_project_1 && make
+RUN apt-get update && apt-get install -y git
+
+RUN git clone https://github.com/EvdokiaFrd/test_repo_for_hw0_security.git .
+
+CMD ["python", "app.py"]
